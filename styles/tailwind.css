@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+/* =================================================
+   THEME VARIABLES
+================================================= */
+
+:root {
+  /* Core */
+  --color-background: #FFFFFF;
+  --color-foreground: #0F172A;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #0F172A;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #0F172A;
+
+  /* Brand */
+  --color-primary: #1E40AF;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #059669;
+  --color-secondary-foreground: #FFFFFF;
+  --color-accent: #6366F1;
+  --color-accent-foreground: #FFFFFF;
+
+  /* States */
+  --color-muted: #F1F5F9;
+  --color-muted-foreground: #64748B;
+  --color-destructive: #DC2626;
+  --color-destructive-foreground: #FFFFFF;
+  --color-success: #059669;
+  --color-success-foreground: #FFFFFF;
+  --color-warning: #F59E0B;
+  --color-warning-foreground: #FFFFFF;
+  --color-error: #DC2626;
+  --color-error-foreground: #FFFFFF;
+
+  /* UI */
+  --color-border: #E2E8F0;
+  --color-input: #E2E8F0;
+  --color-ring: #6366F1;
+
+  --radius: 0.75rem;
+}
+
+/* =================================================
+   BASE COLOR UTILITIES
+================================================= */
+
+@utility bg-background { background-color: var(--color-background); }
+@utility bg-card { background-color: var(--color-card); }
+@utility bg-popover { background-color: var(--color-popover); }
+@utility bg-primary { background-color: var(--color-primary); }
+@utility bg-secondary { background-color: var(--color-secondary); }
+@utility bg-accent { background-color: var(--color-accent); }
+@utility bg-muted { background-color: var(--color-muted); }
+@utility bg-destructive { background-color: var(--color-destructive); }
+@utility bg-success { background-color: var(--color-success); }
+@utility bg-warning { background-color: var(--color-warning); }
+@utility bg-error { background-color: var(--color-error); }
+
+@utility text-foreground { color: var(--color-foreground); }
+@utility text-primary { color: var(--color-primary); }
+@utility text-secondary { color: var(--color-secondary); }
+@utility text-accent { color: var(--color-accent); }
+@utility text-muted { color: var(--color-muted); }
+
+@utility text-card-foreground { color: var(--color-card-foreground); }
+@utility text-popover-foreground { color: var(--color-popover-foreground); }
+@utility text-primary-foreground { color: var(--color-primary-foreground); }
+@utility text-secondary-foreground { color: var(--color-secondary-foreground); }
+@utility text-accent-foreground { color: var(--color-accent-foreground); }
+@utility text-muted-foreground { color: var(--color-muted-foreground); }
+@utility text-destructive-foreground { color: var(--color-destructive-foreground); }
+@utility text-success-foreground { color: var(--color-success-foreground); }
+@utility text-warning-foreground { color: var(--color-warning-foreground); }
+@utility text-error-foreground { color: var(--color-error-foreground); }
+
+@utility border-border { border-color: var(--color-border); }
+@utility border-primary { border-color: var(--color-primary); }
+@utility border-secondary { border-color: var(--color-secondary); }
+@utility border-input { border-color: var(--color-input); }
+
+@utility ring-ring { --tw-ring-color: var(--color-ring); }
+
+/* =================================================
+   OPACITY SUPPORT (slash syntax)
+================================================= */
+
+/* from-primary/10 */
+.from-primary\/10 {
+  --tw-gradient-from: color-mix(in srgb, var(--color-primary) 10%, transparent);
+}
+
+/* to-secondary/10 */
+.to-secondary\/10 {
+  --tw-gradient-to: color-mix(in srgb, var(--color-secondary) 10%, transparent);
+}
+
+/* =================================================
+   STATE VARIANTS
+================================================= */
+
+/* hover:border-secondary */
+.hover\:border-secondary:hover {
+  border-color: var(--color-secondary);
+}
+
+/* group-hover:border-primary */
+.group:hover .group-hover\:border-primary {
+  border-color: var(--color-primary);
+}
+
+
+/* =================================================
+   RADIUS
+================================================= */
+
+@utility rounded-lg { border-radius: var(--radius); }
+@utility rounded-md { border-radius: calc(var(--radius) - 2px); }
+@utility rounded-sm { border-radius: calc(var(--radius) - 4px); }
+
+/* =================================================
+   ANIMATIONS
+================================================= */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@utility delay-100 { animation-delay: 0.1s; }
+@utility delay-200 { animation-delay: 0.2s; }
+@utility delay-300 { animation-delay: 0.3s; }
+@utility delay-400 { animation-delay: 0.4s; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@utility animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@utility animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* =================================================
+   EFFECT UTILITIES
+================================================= */
+
+@utility gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-accent)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@utility shadow-soft {
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.1);
+}
+
+@utility shadow-glow {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+}
